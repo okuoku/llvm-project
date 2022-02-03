@@ -401,12 +401,8 @@ void InitHeaderSearch::AddDefaultCPlusPlusIncludePaths(
     switch (triple.getEnvironment()) {
     default: llvm_unreachable("Include management is handled in the driver.");
     case llvm::Triple::Cygnus:
-      // Cygwin-1.7
-      AddMinGWCPlusPlusIncludePaths("/usr/lib/gcc", "i686-pc-cygwin", "4.7.3");
-      AddMinGWCPlusPlusIncludePaths("/usr/lib/gcc", "i686-pc-cygwin", "4.5.3");
-      AddMinGWCPlusPlusIncludePaths("/usr/lib/gcc", "i686-pc-cygwin", "4.3.4");
-      // g++-4 / Cygwin-1.5
-      AddMinGWCPlusPlusIncludePaths("/usr/lib/gcc", "i686-pc-cygwin", "4.3.2");
+      // Recent Cygwin
+      AddMinGWCPlusPlusIncludePaths("/usr/lib/gcc", "x86_64-pc-cygwin", "11");
       break;
     }
     break;
