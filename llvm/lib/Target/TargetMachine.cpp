@@ -121,8 +121,8 @@ bool TargetMachine::shouldAssumeDSOLocal(const Module &M,
     // don't assume the variables to be DSO local unless we actually know
     // that for sure. This only has to be done for variables; for functions
     // the linker can insert thunks for calling functions from another DLL.
-    if (TT.isWindowsGNUEnvironment() && GV->isDeclarationForLinker() &&
-        isa<GlobalVariable>(GV))
+    if ((TT.isWindowsGNUEnvironment() || TT.isWindowsCygwinEnvironment()) 
+        && GV->isDeclarationForLinker() && isa<GlobalVariable>(GV))
       return false;
 
     // Don't mark 'extern_weak' symbols as DSO local. If these symbols remain
