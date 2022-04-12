@@ -29,12 +29,20 @@
 
 #include "lldb/Host/PosixApi.h"
 
+// FIXME FIXME:
+
+extern "C" {
+const struct in6_addr 	in6addr_any = IN6ADDR_ANY_INIT;
+const struct in6_addr 	in6addr_loopback = IN6ADDR_LOOPBACK_INIT;
+};
+
 // WindowsXP needs an inet_ntop implementation
 #ifdef _WIN32
 
 #ifndef INET6_ADDRSTRLEN // might not be defined in older Windows SDKs
 #define INET6_ADDRSTRLEN 46
 #endif
+
 
 // TODO: implement shortened form "::" for runs of zeros
 const char *inet_ntop(int af, const void *src, char *dst, socklen_t size) {
